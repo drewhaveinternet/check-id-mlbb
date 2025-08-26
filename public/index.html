@@ -1,264 +1,251 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cek ID Akun Mobile Legends</title>
   <meta name="description" content="Cek Username dan Region Akun Mobile Legends lewat ID" />
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Google Fonts: Poppins for elegant soft font -->
+  
+  <!-- Google Fonts Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- jQuery & Lucide Icons -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
-    /* Reset and base */
+    /* RESET & BASIC */
     * {
       box-sizing: border-box;
     }
     body {
-      margin: 0;
-      background: #121212;
-      color: #e6f4ea;
+      margin: 0; padding: 0;
       font-family: 'Poppins', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      display: flex;
+      background: linear-gradient(135deg, #1c1a17, #403d32);
+      color: #f5f1e9;
       min-height: 100vh;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 1rem;
     }
-
     main {
+      background: rgba(255 255 255 / 0.07);
+      border: 1px solid rgba(255 255 255 / 0.15);
+      border-radius: 1rem;
+      max-width: 420px;
       width: 100%;
-      max-width: 400px;
-      background: linear-gradient(145deg, #1f2a20, #18221a);
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(46, 125, 50, 0.5);
-      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255 215 0, 0.35);
+      backdrop-filter: blur(12px);
+      padding: 2rem;
       display: flex;
       flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
     }
 
-    #header {
+    /* HEADER */
+    header {
       text-align: center;
-      padding: 2rem 1.5rem 1rem;
-      user-select: none;
     }
-    #header img {
+    header img {
       height: 60px;
       width: auto;
-      margin-bottom: 12px;
-      filter: drop-shadow(0 0 3px #4caf50);
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 5px gold);
     }
-    #header h1 {
-      font-size: 1.8rem;
+    header h1 {
+      margin: 0;
       font-weight: 600;
-      margin: 0 0 6px;
-      color: #a4d787;
-      letter-spacing: 0.04em;
+      font-size: 1.75rem;
+      color: #ffd966;
+      text-shadow: 0 0 6px #ffd966aa;
     }
-    #header p {
-      font-weight: 400;
+    header p {
+      margin: 0.25rem 0 0;
       font-size: 0.9rem;
-      color: #9bbf8e;
+      color: #e0d9c1cc;
     }
 
+    /* FORM */
     form {
-      padding: 0 1.5rem 2rem;
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1rem;
     }
-
     label {
       font-size: 0.9rem;
       font-weight: 600;
-      color: #b8d6a3;
-      display: block;
-      margin-bottom: 6px;
-      user-select: none;
+      color: #ffd966cc;
+      user-select:none;
     }
-
-    input[type="number"] {
+    input[type=number] {
       width: 100%;
-      padding: 10px 12px;
+      padding: 0.5rem 0.75rem;
       font-size: 1rem;
-      border-radius: 10px;
-      border: 1.5px solid #4caf50aa;
-      background: #2a3a22;
-      color: #d6e8c3;
-      transition: border-color 0.3s ease, background-color 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-      user-select: text;
+      border-radius: 0.5rem;
+      border: 1.5px solid #ffd96688;
+      background: rgba(255 255 255 / 0.1);
+      color: #f5f1e9;
+      transition: border-color 0.3s ease;
+      box-shadow: inset 0 0 5px #ffd96655;
     }
-    input[type="number"]::placeholder {
-      color: #81a46aaa;
+    input[type=number]::placeholder {
+      color: #ffd96655;
+      font-style: italic;
     }
-    input[type="number"]:focus {
+    input[type=number]:focus {
       outline: none;
-      border-color: #a4d787;
-      background-color: #365827;
-      box-shadow: 0 0 6px #4caf50aa;
+      border-color: #ffd966ee;
+      box-shadow: 0 0 8px #ffd966dd;
+      background: rgba(255 255 255 / 0.15);
     }
 
+    /* BUTTON */
     button#submit-button {
       position: relative;
-      width: 100%;
-      background: linear-gradient(45deg, #2a7a2a, #4caf50);
-      color: #e6f4ea;
-      border: none;
-      border-radius: 12px;
-      height: 48px;
+      background: linear-gradient(90deg, #ffd966 0%, #e6c84a 100%);
+      color: #1c1a17;
       font-weight: 600;
       font-size: 1.1rem;
+      padding: 0.75rem 0;
+      border: none;
+      border-radius: 0.7rem;
       cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 15px rgba(46, 125, 50, 0.6);
-      font-family: 'Poppins', sans-serif;
       overflow: hidden;
-      user-select: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      box-shadow: 0 0 15px #ffd966aa;
+      user-select:none;
+      transition: background 0.3s ease;
     }
     button#submit-button:hover:not(.loading) {
-      background: linear-gradient(45deg, #4caf50, #2a7a2a);
-      color: #dff3d9;
-      box-shadow: 0 6px 18px rgba(76, 175, 80, 0.8);
+      background: linear-gradient(90deg, #ffec7a 0%, #ffde59 100%);
+      box-shadow: 0 0 25px #ffe066cc;
     }
-    button#submit-button.loading .btn-text {
-      display: none;
+    button#submit-button.loading {
+      cursor: default;
+      background: #b39a3d;
+      box-shadow: 0 0 20px #b39a3d99 inset;
+      color: #333;
+    }
+    button#submit-button .btn-loader {
+      position: absolute;
+      top: 50%;
+      right: 1.2rem;
+      transform: translateY(-50%);
+      font-weight: 600;
+      color: #333;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      user-select:none;
     }
     button#submit-button.loading .btn-loader {
-      display: inline-block;
-      font-variant-numeric: tabular-nums;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      font-size: 1.1rem;
-      color: #c5e1a5;
+      opacity: 1;
+    }
+    button#submit-button.loading .btn-text {
+      opacity: 0.3;
     }
 
-    .btn-loader {
+    /* ERROR & RESULT CONTAINER */
+    #error-container, #result-container {
+      padding: 1rem 1.25rem;
+      border-radius: 0.7rem;
+      font-size: 0.95rem;
       display: none;
-      user-select: none;
+      align-items: center;
+      gap: 0.5rem;
     }
-
     #error-container {
-      background: #fdecea;
-      border-radius: 12px;
-      padding: 12px 16px;
+      background: rgba(255, 0, 0, 0.15);
+      color: #ff5555;
+      box-shadow: 0 0 12px #ff4444aa;
+    }
+    #result-container {
+      background: rgba(140, 200, 60, 0.25);
+      color: #d1f289;
+      box-shadow: 0 0 15px #9fbe3dcc;
+      flex-direction: column;
+    }
+    #result-container > div:first-child {
       display: flex;
       align-items: center;
-      gap: 10px;
       font-weight: 600;
-      color: #b00020;
-      box-shadow: 0 2px 10px rgba(176, 0, 32, 0.3);
-      font-size: 0.95rem;
-      user-select: none;
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInUp 0.6s forwards;
+      font-size: 1.1rem;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      text-shadow: 0 0 8px #b0cc57;
     }
-    #error-container.hidden {
-      display: none !important;
-      opacity: 0;
-      transform: translateY(0);
+    #result-container .info-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 500;
     }
-    #error-container i[data-lucide] {
-      stroke: #b00020;
-      stroke-width: 2.5;
-      min-width: 22px;
-      min-height: 22px;
+    #result-container .info-label {
+      min-width: 70px;
+      color: #d6dbb7;
+      font-size: 0.85rem;
+      user-select:none;
+    }
+    #result-container .info-value {
+      font-weight: 700;
+      font-size: 1rem;
+      user-select:text;
+      color: #eef5d7;
+      text-shadow: 0 0 4px #d1f289bb;
     }
 
-    #result-container {
-      background: #e6f4ea;
-      border-radius: 14px;
-      padding: 1.1rem 1.4rem;
-      color: #2a7a2a;
-      box-shadow: 0 4px 20px rgba(46, 125, 50, 0.25);
-      font-family: 'Poppins', sans-serif;
-      user-select: none;
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeInUp 0.6s forwards;
+    /* ICONS */
+    svg {
+      stroke-width: 2.5;
+      color: #ffd966cc;
+      flex-shrink: 0;
+    }
+    #result-container svg {
+      color: #a7ce58;
+    }
+    #error-container svg {
+      color: #ff5555;
+    }
+
+    /* FOOTER */
+    footer {
+      font-size: 0.75rem;
+      text-align: center;
+      color: #a99a5a;
+      user-select:none;
       margin-top: 1.5rem;
     }
-    #result-container i[data-lucide] {
-      stroke: #2a7a2a;
-      stroke-width: 2.7;
-      min-width: 22px;
-      min-height: 22px;
+    footer a {
+      color: #ffd966cc;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
     }
 
-    #result-container .font-medium {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      user-select: none;
-    }
-
-    #result-container .space-y-2 > div {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-      user-select: none;
-    }
-    #result-container .text-xs {
-      font-size: 0.75rem;
-      color: #5a6b52;
-      margin: 0;
-    }
-    #result-container p.text-sm {
-      margin: 0;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #2a7a2a;
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Responsive */
+    /* RESPONSIVE */
     @media (max-width: 480px) {
       main {
+        padding: 1.5rem 1.25rem;
         max-width: 100%;
-        border-radius: 12px;
-        padding-bottom: 1rem;
       }
-      #header h1 {
-        font-size: 1.5rem;
+      header h1 {
+        font-size: 1.4rem;
       }
       button#submit-button {
-        height: 44px;
         font-size: 1rem;
-        border-radius: 10px;
       }
     }
   </style>
 </head>
 <body>
   <main role="main" aria-label="Cek ID Akun Mobile Legends">
-    <section id="header" aria-labelledby="main-title">
+    <header>
       <img src="./img/logo-ml.webp" alt="Logo Mobile Legends" />
-      <h1 id="main-title">Cek ID Akun Mobile Legends</h1>
+      <h1>Cek ID Akun Mobile Legends</h1>
       <p>Cek Username dan Region Akun Mobile Legends lewat ID</p>
-    </section>
+    </header>
 
     <form id="validation-form" aria-describedby="form-desc" novalidate>
       <label for="gameId">User ID</label>
@@ -271,7 +258,6 @@
         required
         inputmode="numeric"
         aria-required="true"
-        aria-describedby="gameId-desc"
       />
       <label for="serverId">Server ID</label>
       <input
@@ -283,7 +269,6 @@
         required
         inputmode="numeric"
         aria-required="true"
-        aria-describedby="serverId-desc"
       />
 
       <button type="submit" id="submit-button" aria-live="polite" aria-busy="false">
@@ -292,44 +277,36 @@
       </button>
     </form>
 
-    <div id="error-container" class="hidden" role="alert" aria-live="assertive" aria-atomic="true">
-      <i data-lucide="alert-circle"></i>
-      <p id="error-message"></p>
+    <div id="error-container" role="alert" aria-live="assertive" aria-atomic="true" tabindex="0">
+      <svg data-lucide="alert-circle" width="20" height="20"></svg>
+      <p id="error-message" style="margin:0;"></p>
     </div>
 
-    <div id="result-container" class="hidden" aria-live="polite" aria-atomic="true">
-      <div class="font-medium">
-        <i data-lucide="check-circle-2"></i>
+    <div id="result-container" aria-live="polite" aria-atomic="true" tabindex="0">
+      <div>
+        <svg data-lucide="check-circle-2" width="24" height="24"></svg>
         Akun Valid
       </div>
-      <div class="space-y-2">
-        <div>
-          <i data-lucide="user"></i>
-          <div>
-            <p class="text-xs">Nickname</p>
-            <p class="text-sm" id="result-nickname"></p>
-          </div>
-        </div>
-        <div>
-          <i data-lucide="globe"></i>
-          <div>
-            <p class="text-xs">Country</p>
-            <p class="text-sm" id="result-country"></p>
-          </div>
-        </div>
+      <div class="info-row">
+        <svg data-lucide="user" width="20" height="20"></svg>
+        <span class="info-label">Nickname:</span>
+        <span class="info-value" id="result-nickname"></span>
+      </div>
+      <div class="info-row">
+        <svg data-lucide="globe" width="20" height="20"></svg>
+        <span class="info-label">Country:</span>
+        <span class="info-value" id="result-country"></span>
       </div>
     </div>
 
-    <footer style="text-align:center; padding: 1rem; font-size: 0.8rem; color: #617a41; user-select:none;">
-      © <span id="current-year"></span> <a href="//caliph.dev" style="color:#7fbf3f; text-decoration:none;">@caliphdev</a>
+    <footer>
+      © <span id="current-year"></span> <a href="//caliph.dev" target="_blank" rel="noopener noreferrer">@caliphdev</a>
     </footer>
   </main>
 
   <script>
-    // Set current year
+    // Init year & icons
     document.getElementById('current-year').textContent = new Date().getFullYear();
-
-    // Activate lucide icons
     lucide.replace();
 
     const form = document.getElementById('validation-form');
@@ -339,54 +316,79 @@
     const resultContainer = document.getElementById('result-container');
     const resultNickname = document.getElementById('result-nickname');
     const resultCountry = document.getElementById('result-country');
+    const btnLoader = submitBtn.querySelector('.btn-loader');
+    const btnText = submitBtn.querySelector('.btn-text');
 
-    form.addEventListener('submit', function (e) {
+    // Fungsi simulasi cek ID, ganti dengan API/fetch asli kamu
+    function cekAkunML(userId, serverId) {
+      return new Promise((resolve, reject) => {
+        // Simulasi network delay 2 detik
+        setTimeout(() => {
+          // Dummy validasi
+          if (userId === "123456" && serverId === "78") {
+            resolve({ nickname: "CaliphDev", country: "Indonesia" });
+          } else {
+            reject("Akun tidak ditemukan, periksa kembali ID Anda.");
+          }
+        }, 2000);
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-
-      errorContainer.classList.add('hidden');
-      resultContainer.classList.add('hidden');
+      errorContainer.style.display = 'none';
+      resultContainer.style.display = 'none';
 
       const gameId = form.gameId.value.trim();
       const serverId = form.serverId.value.trim();
 
       if (!gameId || !serverId) {
         errorMessage.textContent = "User ID dan Server ID wajib diisi!";
-        errorContainer.classList.remove('hidden');
+        errorContainer.style.display = 'flex';
+        errorContainer.focus();
         return;
       }
 
-      // Mulai animasi loading persen
+      // Mulai animasi loading
       submitBtn.classList.add('loading');
       submitBtn.setAttribute('aria-busy', 'true');
-      const loaderSpan = submitBtn.querySelector('.btn-loader');
-      const textSpan = submitBtn.querySelector('.btn-text');
+      btnLoader.textContent = '0%';
+      btnLoader.style.opacity = 1;
+      btnText.style.opacity = 0.3;
 
       let percent = 0;
-      loaderSpan.textContent = '0%';
-
       const interval = setInterval(() => {
-        percent += 2;
-        if (percent > 100) percent = 100;
-        loaderSpan.textContent = `${percent}%`;
-      }, 30);
+        percent += 5;
+        if (percent > 99) percent = 99; // stop di 99 sampai hasil keluar
+        btnLoader.textContent = `${percent}%`;
+      }, 100);
 
-      // Simulasi fetch async 1.5 detik (gantikan dengan API sebenarnya)
-      setTimeout(() => {
+      try {
+        const data = await cekAkunML(gameId, serverId);
+
         clearInterval(interval);
+        btnLoader.textContent = `100%`;
+
+        // Tampilkan hasil validasi
+        resultNickname.textContent = data.nickname;
+        resultCountry.textContent = data.country;
+        resultContainer.style.display = 'flex';
+        resultContainer.focus();
+
+      } catch (error) {
+        clearInterval(interval);
+        btnLoader.style.opacity = 0;
+        btnText.style.opacity = 1;
+
+        errorMessage.textContent = error;
+        errorContainer.style.display = 'flex';
+        errorContainer.focus();
+      } finally {
         submitBtn.classList.remove('loading');
         submitBtn.setAttribute('aria-busy', 'false');
-        loaderSpan.textContent = '';
-
-        // Contoh cek validasi (gantikan logika sesuai API)
-        if (gameId === "123456" && serverId === "78") {
-          resultNickname.textContent = "CaliphDev";
-          resultCountry.textContent = "Indonesia";
-          resultContainer.classList.remove('hidden');
-        } else {
-          errorMessage.textContent = "Akun tidak ditemukan, periksa kembali ID Anda.";
-          errorContainer.classList.remove('hidden');
-        }
-      }, 1500);
+        btnLoader.style.opacity = 0;
+        btnText.style.opacity = 1;
+      }
     });
   </script>
 </body>
