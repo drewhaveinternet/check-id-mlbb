@@ -9,14 +9,18 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="./css/output.css" />
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   
   <style>
-    /* Base background & font */
+    /* Base soft theme */
     body {
-      background: linear-gradient(135deg, #fffaf0, #d4af37);
-      color: #3c2f00; /* dark gold brown */
-      font-family: 'Georgia', serif;
+      margin: 0;
+      background-color: #f9f7f1; /* very soft cream */
+      color: #4a4a4a; /* dark gray */
+      font-family: 'Poppins', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     main {
       min-height: 100vh;
@@ -25,115 +29,128 @@
       justify-content: center;
       padding: 2rem;
     }
+    #header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    #header img {
+      height: 70px;
+      filter: drop-shadow(0 1px 2px rgba(212, 175, 55, 0.2));
+      margin-bottom: 0.5rem;
+    }
     #header h1 {
-      color: #6b4c00;
-      font-weight: 700;
-      font-family: 'Playfair Display', serif;
-      font-size: 2.25rem;
-      margin-bottom: 0.25rem;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      font-weight: 600;
+      font-size: 2rem;
+      color: #6b5e2b; /* soft gold/brown */
+      margin: 0;
     }
     #header p {
-      color: #8c7000;
+      color: #a39e8f;
+      font-weight: 400;
       font-size: 0.9rem;
+      margin-top: 0.3rem;
       font-style: italic;
     }
     /* Card container */
     #card-container > div {
-      background: #fff9e6; /* soft white cream */
+      background-color: #ffffff; /* white */
       border-radius: 12px;
-      border: 2px solid #d4af37;
-      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+      border: 1.5px solid #d9c98f; /* very soft gold */
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.12);
       max-width: 420px;
       width: 100%;
     }
     /* Card header */
     #card-container h2 {
-      color: #7a5c00;
+      color: #7c7151;
       font-weight: 600;
-      font-size: 1.25rem;
-      margin-bottom: 0.2rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
     }
     #card-container p {
-      color: #a07f00;
+      color: #a39e8f;
+      font-weight: 400;
       font-size: 0.85rem;
       margin-bottom: 1rem;
     }
     /* Form inputs */
     input[type="number"] {
       width: 100%;
-      background: #fff;
-      border: 2px solid #d4af37;
+      background: #f9f7f1;
+      border: 1.5px solid #d9c98f;
       border-radius: 8px;
       padding: 0.5rem 0.75rem;
       font-size: 1rem;
-      color: #4b3b00;
-      box-shadow: inset 0 1px 4px rgba(212, 175, 55, 0.3);
-      transition: border-color 0.3s ease;
-      font-family: 'Georgia', serif;
+      color: #4a4a4a;
+      box-shadow: inset 0 1px 3px rgba(212, 175, 55, 0.12);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Poppins', sans-serif;
     }
     input[type="number"]::placeholder {
-      color: #c9b063;
+      color: #c9bc80;
       font-style: italic;
     }
     input[type="number"]:focus {
       outline: none;
-      border-color: #bfa230;
-      box-shadow: 0 0 6px #bfa230;
-      background: #fffbea;
+      border-color: #bfae4f;
+      box-shadow: 0 0 6px rgba(191, 174, 79, 0.3);
+      background: #fdfcf7;
     }
     label {
-      color: #7a5c00;
+      color: #7c7151;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      display: block;
+      margin-bottom: 0.2rem;
     }
     /* Button */
     button#submit-button {
       width: 100%;
-      background: linear-gradient(45deg, #d4af37, #f9d976);
-      color: #4b3b00;
+      background: linear-gradient(45deg, #d9c98f, #bfae4f);
+      color: #4a4a4a;
       border: none;
       border-radius: 8px;
       height: 40px;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
-      box-shadow: 0 3px 8px rgba(212, 175, 55, 0.6);
-      font-family: 'Georgia', serif;
+      box-shadow: 0 3px 8px rgba(191, 174, 79, 0.3);
+      font-family: 'Poppins', sans-serif;
     }
     button#submit-button:hover {
-      background: linear-gradient(45deg, #bfa230, #d4af37);
+      background: linear-gradient(45deg, #bfae4f, #d9c98f);
       color: #fff;
-      box-shadow: 0 4px 12px rgba(189, 153, 0, 0.8);
+      box-shadow: 0 4px 12px rgba(191, 174, 79, 0.6);
     }
     /* Error container */
     #error-container {
-      background: #b56a00;
+      background: #d9b34a;
       border-radius: 8px;
       padding: 0.75rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
       font-weight: 600;
-      box-shadow: 0 2px 6px rgba(181, 106, 0, 0.6);
+      box-shadow: 0 2px 6px rgba(217, 179, 74, 0.3);
+      color: #4a3e00;
     }
     #error-container p {
-      color: #fff5e1;
+      margin: 0;
       font-size: 0.9rem;
     }
     /* Result container */
     #result-container {
-      background: #fef9e7;
+      background: #f9f7f1;
       border-radius: 10px;
       padding: 1rem;
-      color: #6b4c00;
-      box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
-      font-family: 'Georgia', serif;
+      color: #7c7151;
+      box-shadow: 0 3px 10px rgba(191, 174, 79, 0.15);
+      font-family: 'Poppins', sans-serif;
     }
     #result-container h3 {
-      font-weight: 700;
-      color: #8c7000;
+      font-weight: 600;
+      color: #bfae4f;
       margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
@@ -141,58 +158,56 @@
       font-size: 1rem;
     }
     #result-container p {
-      color: #7a5c00;
-      font-size: 0.9rem;
       margin: 0;
+      font-size: 0.9rem;
+      color: #6b5e2b;
     }
     /* Icons */
     i[data-lucide] {
-      stroke: #bfa230;
+      stroke: #bfae4f;
       stroke-width: 2;
     }
     /* Footer */
     #card-container > div > div:last-child {
-      border-top: 1px solid #d4af37;
+      border-top: 1px solid #d9c98f;
       padding-top: 0.5rem;
       text-align: center;
       font-size: 0.75rem;
-      color: #a07f00;
-      font-family: 'Georgia', serif;
+      color: #a39e8f;
+      font-family: 'Poppins', sans-serif;
     }
     #card-container > div > div:last-child a {
-      color: #8c7000;
+      color: #bfae4f;
       text-decoration: none;
       font-weight: 600;
     }
     #card-container > div > div:last-child a:hover {
       text-decoration: underline;
     }
-    /* Logo */
-    #header img {
-      filter: drop-shadow(1px 1px 1px rgba(212, 175, 55, 0.8));
-      max-height: 70px;
-      width: auto;
+    /* Utility */
+    .hidden {
+      display: none !important;
     }
   </style>
 </head>
 <body>
   <main>
     <div class="w-full max-w-md px-4 sm:px-0">
-      <div class="mb-6 text-center fade-in" id="header">
+      <div id="header" class="fade-in">
         <div class="flex items-center justify-center mb-2">
           <img src="./img/logo-ml.webp" alt="Logo ML" />
         </div>
         <h1>Cek ID Akun Mobile Legends</h1>
         <p>Cek Username dan Region Akun Mobile Legends lewat ID</p>
       </div>
-      
-      <div class="fade-in fade-in-delay" id="card-container">
+
+      <div id="card-container" class="fade-in fade-in-delay">
         <div>
           <div class="pb-3 pt-5 px-6">
             <h2>ID Akun Mobile Legends</h2>
             <p>Masukkan User ID dan Server ID akun Mobile Legends Anda</p>
           </div>
-          
+
           <div class="px-6 pb-6">
             <form id="validation-form" class="space-y-4">
               <div class="space-y-1.5">
@@ -204,7 +219,7 @@
                   autocomplete="off"
                 />
               </div>
-              
+
               <div class="space-y-1.5">
                 <label for="serverId">Server ID</label>
                 <input
@@ -214,25 +229,25 @@
                   autocomplete="off"
                 />
               </div>
-              
+
               <button type="submit" id="submit-button">
                 <span>Cek Sekarang!</span>
               </button>
             </form>
-            
+
             <div id="error-container" class="mt-4 hidden">
               <div class="flex items-center">
                 <i data-lucide="alert-circle" class="h-4 w-4"></i>
                 <p id="error-message"></p>
               </div>
             </div>
-            
+
             <div id="result-container" class="mt-4 hidden">
               <div class="flex items-center gap-2 mb-2">
                 <i data-lucide="check-circle-2" class="h-4 w-4"></i>
                 <h3>Akun Valid</h3>
               </div>
-              
+
               <div class="space-y-2 mt-2">
                 <div class="flex items-center gap-2">
                   <i data-lucide="user" class="h-4 w-4"></i>
@@ -241,7 +256,7 @@
                     <p id="result-nickname"></p>
                   </div>
                 </div>
-                
+
                 <div class="flex items-center gap-2">
                   <i data-lucide="globe" class="h-4 w-4"></i>
                   <div>
@@ -252,7 +267,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="flex justify-center pt-2 pb-3 border-t px-6">
             <p>
               © <span id="current-year"></span> <a href="//caliph.dev">@caliphdev</a>
