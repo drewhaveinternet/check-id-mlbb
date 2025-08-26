@@ -52,6 +52,7 @@
       padding: 2rem;
       box-sizing: border-box;
       border: 2px solid var(--gold);
+      transition: max-width 0.3s ease;
     }
 
     /* Header */
@@ -176,57 +177,63 @@
       font-size: 0.9rem;
     }
 
-    /* Result container */
+    /* Result container as table with green bg */
     #result-container {
-      background-color: #fff7e6;
-      border: 1.5px solid var(--gold-dark);
+      display: block;
+      background-color: #2e7d32; /* hijau gelap */
       border-radius: 12px;
-      padding: 1rem 1.5rem;
-      color: var(--gold-dark);
-      box-shadow: 0 2px 8px var(--shadow-light);
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.5);
+      color: white;
+      padding: 1rem;
+      margin-top: 1.5rem;
       font-weight: 600;
     }
 
-    /* Result header */
     #result-container h3 {
-      color: var(--gold-dark);
-      margin: 0;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
     }
 
-    /* Result items */
-    #result-container .flex.items-center.gap-2 {
-      margin-top: 0.5rem;
+    #result-container table {
+      width: 100%;
+      border-collapse: collapse;
     }
 
-    #result-container p.text-xs {
-      color: var(--gold-dark);
-      opacity: 0.7;
-      margin: 0;
-      font-weight: 600;
-      font-size: 0.75rem;
+    #result-container th,
+    #result-container td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    #result-container p.text-sm {
-      margin: 0;
+    #result-container th {
       font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--gold-dark);
+      font-size: 1rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+      vertical-align: middle;
     }
 
-    /* Lucide icons gold */
-    svg.lucide {
-      stroke: var(--gold-dark) !important;
+    #result-container td {
+      font-weight: 600;
+      font-size: 0.95rem;
+      vertical-align: middle;
+    }
+
+    /* Icons inside result table */
+    #result-container i.lucide {
+      stroke: white !important;
+      vertical-align: middle;
     }
 
     /* Footer */
     .flex.justify-center.pt-2.pb-3.border-t {
       border-color: var(--gold-light);
       margin-top: 2rem;
+      text-align: center;
     }
 
     .flex.justify-center.pt-2.pb-3.border-t p {
@@ -245,6 +252,46 @@
     .flex.justify-center.pt-2.pb-3.border-t a:hover {
       color: var(--gold-dark);
       text-decoration: underline;
+    }
+
+    /* Responsif dasar */
+    main {
+      max-width: 95vw;
+    }
+
+    /* Tablet */
+    @media (min-width: 768px) {
+      main {
+        max-width: 500px;
+        padding: 3rem 3.5rem;
+      }
+
+      #header h1 {
+        font-size: 2.25rem;
+      }
+
+      #card-container h2 {
+        font-size: 1.5rem;
+      }
+
+      input[type="number"] {
+        font-size: 1.1rem;
+        padding: 0.65rem 1.25rem;
+      }
+
+      button#submit-button {
+        font-size: 1.1rem;
+        padding: 0.75rem 0;
+        border-radius: 12px;
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 1024px) {
+      main {
+        max-width: 600px;
+        padding: 4rem 5rem;
+      }
     }
   </style>
 </head>
@@ -291,46 +338,69 @@
         <p id="error-message"></p>
       </div>
 
-      <div id="result-container" class="hidden" aria-live="polite">
+      <div id="result-container" class="hidden" aria-live="polite" role="region" aria-label="Hasil Akun Valid">
         <h3>
           <i data-lucide="check-circle-2" class="lucide"></i>
           Akun Valid
         </h3>
 
-        <div class="flex items-center gap-2 mt-3">
-          <i data-lucide="user" class="lucide"></i>
-          <div>
-            <p class="text-xs">Nickname</p>
-            <p id="result-nickname" class="text-sm"></p>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-2 mt-2">
-          <i data-lucide="globe" class="lucide"></i>
-          <div>
-            <p class="text-xs">Country</p>
-            <p id="result-country" class="text-sm"></p>
-          </div>
-        </div>
+        <table>
+          <tbody>
+            <tr>
+              <th><i data-lucide="user" class="lucide"></i> Nickname</th>
+              <td id="result-nickname"></td>
+            </tr>
+            <tr>
+              <th><i data-lucide="globe" class="lucide"></i> Country</th>
+              <td id="result-country"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <div class="flex justify-center pt-2 pb-3 border-t mt-6">
+    <div class="flex justify-center pt-2 pb-3 border-t">
       <p>
-        © <span id="current-year"></span> <a href="//caliph.dev">@caliphdev</a>
+        © <span id="current-year"></span> <a href="//caliph.dev" target="_blank" rel="noopener noreferrer">@caliphdev</a>
       </p>
     </div>
   </main>
 
-  <script src="./js/script.js"></script>
   <script>
-    // Initialize lucide icons after page loads
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.lucide) {
-        lucide.replace();
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Activate lucide icons
+    lucide.replace();
+
+    // Simple form handling (example)
+    $('#validation-form').on('submit', function(e) {
+      e.preventDefault();
+      $('#error-container').hide();
+      $('#result-container').hide();
+
+      const userId = $('#gameId').val().trim();
+      const serverId = $('#serverId').val().trim();
+
+      if (!userId || !serverId) {
+        $('#error-message').text('User ID dan Server ID harus diisi!');
+        $('#error-container').show();
+        return;
       }
-      // Set current year
-      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Simulasi response validasi (ganti dengan API asli)
+      // Dummy data
+      const dummyData = {
+        nickname: 'CaliphDev',
+        country: 'Indonesia',
+      };
+
+      // Simulasi delay
+      setTimeout(() => {
+        $('#result-nickname').text(dummyData.nickname);
+        $('#result-country').text(dummyData.country);
+        $('#result-container').show();
+      }, 800);
     });
   </script>
 </body>
