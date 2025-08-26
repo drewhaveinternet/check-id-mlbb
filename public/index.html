@@ -5,51 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cek ID Akun Mobile Legends</title>
   <meta name="description" content="Cek Username dan Region Akun Mobile Legends lewat ID" />
-  <!-- Google Fonts: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    /* Reset & base */
-    * {
-      box-sizing: border-box;
-    }
     body {
-      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #f9f8f6;
+      background: #fffbea;
       color: #3e3e3e;
+      margin: 0;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       min-height: 100vh;
       padding: 20px;
     }
     main {
       background: #fff;
       border-radius: 15px;
-      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
       max-width: 420px;
       width: 100%;
       padding: 30px 35px;
-      border: 2px solid #d4af37; /* gold border */
+      border: 2px solid #d4af37;
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
     }
-    header {
+    #header {
       text-align: center;
       margin-bottom: 30px;
     }
-    header img {
+    #header img {
       height: 60px;
       margin-bottom: 15px;
       filter: drop-shadow(0 0 3px #d4af37);
     }
-    header h1 {
+    #header h1 {
       font-weight: 600;
       font-size: 1.8rem;
-      color: #b68e13; /* dark gold */
+      color: #b68e13;
       margin: 0 0 5px;
     }
-    header p {
+    #header p {
       font-weight: 400;
       font-size: 0.9rem;
       color: #8c8c8c;
@@ -82,7 +78,7 @@
       box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
       background-color: #fffef6;
     }
-    button {
+    #submit-button {
       background: linear-gradient(135deg, #d4af37, #b68e13);
       color: #fffbea;
       font-weight: 600;
@@ -94,7 +90,7 @@
       transition: background 0.4s ease;
       box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
     }
-    button:hover {
+    #submit-button:hover {
       background: linear-gradient(135deg, #b68e13, #d4af37);
       box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
     }
@@ -108,10 +104,13 @@
       font-size: 0.95rem;
       margin-top: 15px;
       box-shadow: 0 0 10px #f4a2a2;
+      align-items: center;
+      display: flex;
     }
     #error-container i {
       margin-right: 8px;
       vertical-align: middle;
+      min-width: 20px;
     }
     #result-container {
       background: #fffbea;
@@ -167,72 +166,87 @@
 </head>
 <body>
   <main>
-    <header>
-      <img src="./img/logo-ml.webp" alt="Logo Mobile Legends" />
+    <div id="header">
+      <div class="flex items-center justify-center mb-2">
+        <img src="./img/logo-ml.webp" alt="Logo ML" />
+      </div>
       <h1>Cek ID Akun Mobile Legends</h1>
       <p>Cek Username dan Region Akun Mobile Legends lewat ID</p>
-    </header>
-
-    <form id="validation-form">
-      <label for="gameId">User ID</label>
-      <input
-        type="number"
-        id="gameId"
-        placeholder="Masukkan User ID Anda"
-        autocomplete="off"
-        required
-        min="1"
-      />
-
-      <label for="serverId">Server ID</label>
-      <input
-        type="number"
-        id="serverId"
-        placeholder="Masukkan Server ID Anda"
-        autocomplete="off"
-        required
-        min="1"
-      />
-
-      <button type="submit">Cek Sekarang!</button>
-    </form>
-
-    <div id="error-container">
-      <i data-lucide="alert-circle"></i>
-      <span id="error-message"></span>
     </div>
 
-    <div id="result-container">
-      <h3><i data-lucide="check-circle-2"></i> Akun Valid</h3>
-      <div class="result-item">
-        <i data-lucide="user"></i>
-        <div>
-          <p>Nickname</p>
-          <p id="result-nickname"></p>
+    <div id="card-container">
+      <div>
+        <div class="pb-3 pt-5 px-6">
+          <h2 class="text-lg font-medium text-white">ID Akun Mobile Legends</h2>
+          <p class="text-white/70 text-sm">Masukkan User ID dan Server ID akun Mobile Legends Anda</p>
         </div>
-      </div>
-      <div class="result-item">
-        <i data-lucide="globe"></i>
-        <div>
-          <p>Country</p>
-          <p id="result-country"></p>
+
+        <div class="px-6 pb-6">
+          <form id="validation-form" class="space-y-4">
+            <div class="space-y-1.5">
+              <label for="gameId">User ID</label>
+              <input
+                type="number"
+                id="gameId"
+                placeholder="Masukkan User ID Anda"
+                autocomplete="off"
+                required
+                min="1"
+              />
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="serverId">Server ID</label>
+              <input
+                type="number"
+                id="serverId"
+                placeholder="Masukkan Server ID Anda"
+                autocomplete="off"
+                required
+                min="1"
+              />
+            </div>
+
+            <button type="submit" id="submit-button">Cek Sekarang!</button>
+          </form>
+
+          <div id="error-container" hidden>
+            <i data-lucide="alert-circle"></i>
+            <p id="error-message"></p>
+          </div>
+
+          <div id="result-container" hidden>
+            <h3><i data-lucide="check-circle-2"></i> Akun Valid</h3>
+            <div class="result-item">
+              <i data-lucide="user"></i>
+              <div>
+                <p>Nickname</p>
+                <p id="result-nickname"></p>
+              </div>
+            </div>
+            <div class="result-item">
+              <i data-lucide="globe"></i>
+              <div>
+                <p>Country</p>
+                <p id="result-country"></p>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <footer>
+          © <span id="current-year"></span> <a href="//caliph.dev">notfound drew</a>
+        </footer>
       </div>
     </div>
-
-    <footer>
-      © <span id="current-year"></span> <a href="//caliph.dev">notfound drew</a>
-    </footer>
   </main>
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="./js/script.js"></script>
   <script>
-    // Initialize Lucide icons
+    // Jalankan lucide icons setelah load
     lucide.replace();
 
-    // Update year in footer
+    // Update tahun otomatis
     document.getElementById("current-year").textContent = new Date().getFullYear();
   </script>
 </body>
