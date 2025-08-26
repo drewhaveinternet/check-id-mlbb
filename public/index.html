@@ -9,372 +9,343 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Google Fonts: Poppins -->
+  <!-- Google Fonts: Poppins for elegant soft font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  
   <style>
-    /* Base soft theme & reset */
-    *, *::before, *::after {
+    /* Reset and base */
+    * {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      background-color: #f9f7f1; /* very soft cream */
-      color: #4a4a4a; /* dark gray */
+      background: #121212;
+      color: #e6f4ea;
       font-family: 'Poppins', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      line-height: 1.5;
-      min-height: 100vh;
       display: flex;
-      justify-content: center;
+      min-height: 100vh;
       align-items: center;
+      justify-content: center;
       padding: 1rem;
     }
+
     main {
       width: 100%;
-      max-width: 480px;
-      background-color: #fff;
-      border-radius: 12px;
-      border: 1.5px solid #d9c98f;
-      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.12);
-      padding: 2rem 2.5rem;
+      max-width: 400px;
+      background: linear-gradient(145deg, #1f2a20, #18221a);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(46, 125, 50, 0.5);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      animation: fadeIn 0.8s ease forwards;
     }
 
-    /* Header */
     #header {
       text-align: center;
-      margin-bottom: 2rem;
+      padding: 2rem 1.5rem 1rem;
       user-select: none;
     }
     #header img {
-      height: 70px;
-      filter: drop-shadow(0 1px 2px rgba(212, 175, 55, 0.25));
-      margin-bottom: 0.5rem;
+      height: 60px;
+      width: auto;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 3px #4caf50);
     }
     #header h1 {
+      font-size: 1.8rem;
       font-weight: 600;
-      font-size: 2rem;
-      color: #6b5e2b; /* soft gold */
-      margin: 0;
+      margin: 0 0 6px;
+      color: #a4d787;
+      letter-spacing: 0.04em;
     }
     #header p {
-      color: #a39e8f;
       font-weight: 400;
       font-size: 0.9rem;
-      margin-top: 0.3rem;
-      font-style: italic;
+      color: #9bbf8e;
     }
 
-    /* Titles */
-    h2 {
-      color: #7c7151;
-      font-weight: 600;
-      font-size: 1.3rem;
-      margin-bottom: 0.3rem;
-    }
-    p.desc {
-      color: #a39e8f;
-      font-weight: 400;
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
-    }
-
-    /* Form */
     form {
-      width: 100%;
+      padding: 0 1.5rem 2rem;
       display: flex;
       flex-direction: column;
-      gap: 1.3rem;
+      gap: 1.25rem;
     }
+
     label {
-      color: #7c7151;
+      font-size: 0.9rem;
       font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 0.3rem;
+      color: #b8d6a3;
       display: block;
+      margin-bottom: 6px;
       user-select: none;
     }
+
     input[type="number"] {
       width: 100%;
-      background: #f9f7f1;
-      border: 1.5px solid #d9c98f;
-      border-radius: 8px;
-      padding: 0.55rem 0.75rem;
+      padding: 10px 12px;
       font-size: 1rem;
-      color: #4a4a4a;
-      box-shadow: inset 0 1px 3px rgba(212, 175, 55, 0.12);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+      border: 1.5px solid #4caf50aa;
+      background: #2a3a22;
+      color: #d6e8c3;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
       font-family: 'Poppins', sans-serif;
-      -moz-appearance: textfield; /* Remove number arrows on Firefox */
-    }
-    /* Remove arrows for number input in Chrome/Edge/Safari */
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-      -webkit-appearance: none; 
-      margin: 0; 
+      user-select: text;
     }
     input[type="number"]::placeholder {
-      color: #c9bc80;
-      font-style: italic;
+      color: #81a46aaa;
     }
     input[type="number"]:focus {
       outline: none;
-      border-color: #bfae4f;
-      box-shadow: 0 0 6px rgba(191, 174, 79, 0.3);
-      background: #fdfcf7;
+      border-color: #a4d787;
+      background-color: #365827;
+      box-shadow: 0 0 6px #4caf50aa;
     }
 
-    /* Button with animation */
     button#submit-button {
       position: relative;
       width: 100%;
-      background: linear-gradient(45deg, #d9c98f, #bfae4f);
-      color: #4a4a4a;
+      background: linear-gradient(45deg, #2a7a2a, #4caf50);
+      color: #e6f4ea;
       border: none;
-      border-radius: 8px;
-      height: 44px;
+      border-radius: 12px;
+      height: 48px;
       font-weight: 600;
       font-size: 1.1rem;
       cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease;
-      box-shadow: 0 3px 8px rgba(191, 174, 79, 0.3);
+      transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(46, 125, 50, 0.6);
       font-family: 'Poppins', sans-serif;
       overflow: hidden;
       user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     button#submit-button:hover:not(.loading) {
-      background: linear-gradient(45deg, #bfae4f, #d9c98f);
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(191, 174, 79, 0.6);
+      background: linear-gradient(45deg, #4caf50, #2a7a2a);
+      color: #dff3d9;
+      box-shadow: 0 6px 18px rgba(76, 175, 80, 0.8);
+    }
+    button#submit-button.loading .btn-text {
+      display: none;
+    }
+    button#submit-button.loading .btn-loader {
+      display: inline-block;
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-size: 1.1rem;
+      color: #c5e1a5;
     }
 
-    /* Spinner */
-    button#submit-button.loading span {
-      visibility: hidden;
-    }
-    button#submit-button.loading::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 22px;
-      height: 22px;
-      margin: -11px 0 0 -11px;
-      border: 3px solid transparent;
-      border-top-color: #4a4a4a;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    /* Containers for messages */
-    #error-container {
-      background: #f9d9d7;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 600;
-      color: #8a2c2c;
-      box-shadow: 0 2px 6px rgba(217, 74, 74, 0.3);
-      font-size: 0.95rem;
+    .btn-loader {
+      display: none;
       user-select: none;
     }
-    #error-container p {
-      margin: 0;
+
+    #error-container {
+      background: #fdecea;
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: #b00020;
+      box-shadow: 0 2px 10px rgba(176, 0, 32, 0.3);
+      font-size: 0.95rem;
+      user-select: none;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.6s forwards;
     }
     #error-container.hidden {
       display: none !important;
+      opacity: 0;
+      transform: translateY(0);
+    }
+    #error-container i[data-lucide] {
+      stroke: #b00020;
+      stroke-width: 2.5;
+      min-width: 22px;
+      min-height: 22px;
     }
 
     #result-container {
-      background: #f9f7f1;
-      border-radius: 10px;
-      padding: 1rem 1.2rem;
-      color: #7c7151;
-      box-shadow: 0 3px 10px rgba(191, 174, 79, 0.15);
+      background: #e6f4ea;
+      border-radius: 14px;
+      padding: 1.1rem 1.4rem;
+      color: #2a7a2a;
+      box-shadow: 0 4px 20px rgba(46, 125, 50, 0.25);
       font-family: 'Poppins', sans-serif;
       user-select: none;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.6s forwards;
+      margin-top: 1.5rem;
     }
-    #result-container.hidden {
-      display: none !important;
+    #result-container i[data-lucide] {
+      stroke: #2a7a2a;
+      stroke-width: 2.7;
+      min-width: 22px;
+      min-height: 22px;
     }
-    #result-container h3 {
+
+    #result-container .font-medium {
       font-weight: 600;
-      color: #bfae4f;
-      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 1rem;
-    }
-    #result-container p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #6b5e2b;
-    }
-
-    /* Icons */
-    i[data-lucide] {
-      stroke: #bfae4f;
-      stroke-width: 2;
-      min-width: 20px;
-      min-height: 20px;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.75rem;
-      color: #a39e8f;
+      gap: 6px;
       user-select: none;
     }
-    footer a {
-      color: #bfae4f;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
+
+    #result-container .space-y-2 > div {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      user-select: none;
     }
-    footer a:hover {
-      text-decoration: underline;
-      color: #6b5e2b;
+    #result-container .text-xs {
+      font-size: 0.75rem;
+      color: #5a6b52;
+      margin: 0;
+    }
+    #result-container p.text-sm {
+      margin: 0;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #2a7a2a;
     }
 
     /* Animations */
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes spin {
-      0% {transform: rotate(0deg);}
-      100% {transform: rotate(360deg);}
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Responsive adjustments */
+    /* Responsive */
     @media (max-width: 480px) {
       main {
-        padding: 1.5rem 1.5rem;
         max-width: 100%;
-        border-radius: 10px;
+        border-radius: 12px;
+        padding-bottom: 1rem;
       }
       #header h1 {
-        font-size: 1.7rem;
-      }
-      h2 {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
       }
       button#submit-button {
+        height: 44px;
         font-size: 1rem;
-        height: 42px;
+        border-radius: 10px;
       }
     }
   </style>
 </head>
 <body>
   <main role="main" aria-label="Cek ID Akun Mobile Legends">
-    <div id="header" class="fade-in">
+    <section id="header" aria-labelledby="main-title">
       <img src="./img/logo-ml.webp" alt="Logo Mobile Legends" />
-      <h1>Cek ID Akun Mobile Legends</h1>
+      <h1 id="main-title">Cek ID Akun Mobile Legends</h1>
       <p>Cek Username dan Region Akun Mobile Legends lewat ID</p>
-    </div>
-
-    <section aria-labelledby="form-title" style="width: 100%;">
-      <h2 id="form-title">ID Akun Mobile Legends</h2>
-      <p class="desc">Masukkan User ID dan Server ID akun Mobile Legends Anda</p>
-
-      <form id="validation-form" autocomplete="off" novalidate>
-        <label for="gameId">User ID</label>
-        <input
-          type="number"
-          id="gameId"
-          name="gameId"
-          placeholder="Masukkan User ID Anda"
-          required
-          aria-required="true"
-          aria-describedby="gameId-desc"
-        />
-        
-        <label for="serverId">Server ID</label>
-        <input
-          type="number"
-          id="serverId"
-          name="serverId"
-          placeholder="Masukkan Server ID Anda"
-          required
-          aria-required="true"
-          aria-describedby="serverId-desc"
-        />
-        
-        <button type="submit" id="submit-button" aria-live="polite" aria-busy="false">
-          <span>Cek Sekarang!</span>
-        </button>
-      </form>
-
-      <div id="error-container" class="hidden" role="alert" aria-live="assertive">
-        <i data-lucide="alert-circle"></i>
-        <p id="error-message"></p>
-      </div>
-
-      <div id="result-container" class="hidden" role="region" aria-live="polite" aria-label="Hasil pencarian akun">
-        <div class="flex items-center gap-2 mb-2">
-          <i data-lucide="check-circle-2"></i>
-          <h3>Akun Valid</h3>
-        </div>
-
-        <div style="margin-top: 0.5rem;">
-          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
-            <i data-lucide="user"></i>
-            <div>
-              <p>Nickname</p>
-              <p id="result-nickname"></p>
-            </div>
-          </div>
-
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <i data-lucide="globe"></i>
-            <div>
-              <p>Country</p>
-              <p id="result-country"></p>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <footer>
-      © <span id="current-year"></span> <a href="//caliph.dev" target="_blank" rel="noopener noreferrer">@caliphdev</a>
+    <form id="validation-form" aria-describedby="form-desc" novalidate>
+      <label for="gameId">User ID</label>
+      <input
+        type="number"
+        id="gameId"
+        name="gameId"
+        placeholder="Masukkan User ID Anda"
+        autocomplete="off"
+        required
+        inputmode="numeric"
+        aria-required="true"
+        aria-describedby="gameId-desc"
+      />
+      <label for="serverId">Server ID</label>
+      <input
+        type="number"
+        id="serverId"
+        name="serverId"
+        placeholder="Masukkan Server ID Anda"
+        autocomplete="off"
+        required
+        inputmode="numeric"
+        aria-required="true"
+        aria-describedby="serverId-desc"
+      />
+
+      <button type="submit" id="submit-button" aria-live="polite" aria-busy="false">
+        <span class="btn-text">Cek Sekarang!</span>
+        <span class="btn-loader">0%</span>
+      </button>
+    </form>
+
+    <div id="error-container" class="hidden" role="alert" aria-live="assertive" aria-atomic="true">
+      <i data-lucide="alert-circle"></i>
+      <p id="error-message"></p>
+    </div>
+
+    <div id="result-container" class="hidden" aria-live="polite" aria-atomic="true">
+      <div class="font-medium">
+        <i data-lucide="check-circle-2"></i>
+        Akun Valid
+      </div>
+      <div class="space-y-2">
+        <div>
+          <i data-lucide="user"></i>
+          <div>
+            <p class="text-xs">Nickname</p>
+            <p class="text-sm" id="result-nickname"></p>
+          </div>
+        </div>
+        <div>
+          <i data-lucide="globe"></i>
+          <div>
+            <p class="text-xs">Country</p>
+            <p class="text-sm" id="result-country"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer style="text-align:center; padding: 1rem; font-size: 0.8rem; color: #617a41; user-select:none;">
+      © <span id="current-year"></span> <a href="//caliph.dev" style="color:#7fbf3f; text-decoration:none;">@caliphdev</a>
     </footer>
   </main>
 
-  <script src="./js/script.js"></script>
   <script>
-    // Initialize lucide icons
-    lucide.replace();
-
-    // Set current year in footer
+    // Set current year
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Animate submit button loading spinner
+    // Activate lucide icons
+    lucide.replace();
+
     const form = document.getElementById('validation-form');
     const submitBtn = document.getElementById('submit-button');
     const errorContainer = document.getElementById('error-container');
     const errorMessage = document.getElementById('error-message');
     const resultContainer = document.getElementById('result-container');
+    const resultNickname = document.getElementById('result-nickname');
+    const resultCountry = document.getElementById('result-country');
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      // Clear previous messages
       errorContainer.classList.add('hidden');
       resultContainer.classList.add('hidden');
 
-      // Validate inputs (simple example)
       const gameId = form.gameId.value.trim();
       const serverId = form.serverId.value.trim();
 
@@ -384,19 +355,32 @@
         return;
       }
 
-      // Start loading animation
+      // Mulai animasi loading persen
       submitBtn.classList.add('loading');
       submitBtn.setAttribute('aria-busy', 'true');
+      const loaderSpan = submitBtn.querySelector('.btn-loader');
+      const textSpan = submitBtn.querySelector('.btn-text');
 
-      // Simulate async API call (replace with real fetch)
+      let percent = 0;
+      loaderSpan.textContent = '0%';
+
+      const interval = setInterval(() => {
+        percent += 2;
+        if (percent > 100) percent = 100;
+        loaderSpan.textContent = `${percent}%`;
+      }, 30);
+
+      // Simulasi fetch async 1.5 detik (gantikan dengan API sebenarnya)
       setTimeout(() => {
+        clearInterval(interval);
         submitBtn.classList.remove('loading');
         submitBtn.setAttribute('aria-busy', 'false');
+        loaderSpan.textContent = '';
 
-        // Fake result
+        // Contoh cek validasi (gantikan logika sesuai API)
         if (gameId === "123456" && serverId === "78") {
-          document.getElementById('result-nickname').textContent = "CaliphDev";
-          document.getElementById('result-country').textContent = "Indonesia";
+          resultNickname.textContent = "CaliphDev";
+          resultCountry.textContent = "Indonesia";
           resultContainer.classList.remove('hidden');
         } else {
           errorMessage.textContent = "Akun tidak ditemukan, periksa kembali ID Anda.";
