@@ -322,9 +322,8 @@
     // Fungsi simulasi cek ID, ganti dengan API/fetch asli kamu
     function cekAkunML(userId, serverId) {
       return new Promise((resolve, reject) => {
-        // Simulasi network delay 2 detik
         setTimeout(() => {
-          // Dummy validasi
+          // Contoh validasi dummy
           if (userId === "123456" && serverId === "78") {
             resolve({ nickname: "CaliphDev", country: "Indonesia" });
           } else {
@@ -336,58 +335,61 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Reset semua tampilan dulu
       errorContainer.style.display = 'none';
       resultContainer.style.display = 'none';
+      errorMessage.textContent = '';
+      resultNickname.textContent = '';
+      resultCountry.textContent = '';
 
       const gameId = form.gameId.value.trim();
       const serverId = form.serverId.value.trim();
 
-      if (!gameId || !serverId) {
-        errorMessage.textContent = "User ID dan Server ID wajib diisi!";
+      // Validasi input kosong dan angka positif
+      if (!gameId || !serverId || isNaN(gameId) || isNaN(serverId) || Number(gameId) <= 0 || Number(serverId) <= 0) {
+        errorMessage.textContent = "User ID dan Server ID harus berupa angka positif dan tidak boleh kosong.";
         errorContainer.style.display = 'flex';
         errorContainer.focus();
         return;
       }
 
-      // Mulai animasi loading
+      // Tombol loading & aksesibilitas
       submitBtn.classList.add('loading');
       submitBtn.setAttribute('aria-busy', 'true');
       btnLoader.textContent = '0%';
-      btnLoader.style.opacity = 1;
-      btnText.style.opacity = 0.3;
 
-      let percent = 0;
+      // Simulasi progress loading dari 0% ke 100%
+      let progress = 0;
       const interval = setInterval(() => {
-        percent += 5;
-        if (percent > 99) percent = 99; // stop di 99 sampai hasil keluar
-        btnLoader.textContent = `${percent}%`;
-      }, 100);
+        if (progress < 90) {
+          progress += 10;
+          btnLoader.textContent = progress + '%';
+        }
+      }, 200);
 
       try {
-        const data = await cekAkunML(gameId, serverId);
+        const result = await cekAkunML(gameId, serverId);
 
         clearInterval(interval);
-        btnLoader.textContent = `100%`;
+        btnLoader.textContent = '100%';
 
         // Tampilkan hasil validasi
-        resultNickname.textContent = data.nickname;
-        resultCountry.textContent = data.country;
+        resultNickname.textContent = result.nickname;
+        resultCountry.textContent = result.country;
+
         resultContainer.style.display = 'flex';
         resultContainer.focus();
-
-      } catch (error) {
+      } catch (err) {
         clearInterval(interval);
-        btnLoader.style.opacity = 0;
-        btnText.style.opacity = 1;
+        btnLoader.textContent = '0%';
 
-        errorMessage.textContent = error;
+        errorMessage.textContent = err;
         errorContainer.style.display = 'flex';
         errorContainer.focus();
       } finally {
         submitBtn.classList.remove('loading');
         submitBtn.setAttribute('aria-busy', 'false');
-        btnLoader.style.opacity = 0;
-        btnText.style.opacity = 1;
       }
     });
   </script>
