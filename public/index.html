@@ -15,16 +15,16 @@
   <!-- Tailwind Output -->
   <link rel="stylesheet" href="./css/output.css" />
 </head>
-<body class="bg-gray-900 text-white">
-  <main class="min-h-screen flex flex-col items-center justify-center p-4 animated-gradient">
+<body class="bg-gradient-to-r from-blue-200 via-white to-blue-300 text-gray-900">
+  <main class="min-h-screen flex flex-col items-center justify-center p-4">
     <div class="w-full max-w-md px-4 sm:px-0">
       <!-- Header -->
-      <div class="mb-6 text-center fade-in" id="header">
+      <div class="mb-6 text-center" id="header">
         <div class="flex items-center justify-center mb-2">
-          <img src="./img/logo-ml.webp" class="h-20 w-32 text-white" alt="Logo Mobile Legends" />
+          <img src="./img/logo-ml.webp" class="h-20 w-32" alt="Logo Mobile Legends" />
         </div>
-        <h1 class="text-2xl font-bold text-white">CEK REGION</h1>
-        <p class="text-white/70 text-sm mt-1">Cek Region Mobile Legends lewat ID</p>
+        <h1 class="text-2xl font-bold text-gray-900">CEK REGION</h1>
+        <p class="text-gray-700 text-sm mt-1">Cek Region Mobile Legends lewat ID</p>
       </div>
 
       <!-- Form -->
@@ -32,25 +32,25 @@
         <form id="validation-form" class="space-y-4">
           <!-- User ID -->
           <div class="space-y-1.5">
-            <label for="gameId" class="text-white/90 text-sm block">User ID</label>
+            <label for="gameId" class="text-gray-700 text-sm block">User ID</label>
             <input
               type="number"
               id="gameId"
               placeholder="Masukkan User ID Anda"
               autocomplete="off"
-              class="w-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 h-9 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-white/30"
+              class="w-full bg-blue-100/70 border border-blue-300 text-gray-900 placeholder:text-gray-500 h-9 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
           <!-- Server ID -->
           <div class="space-y-1.5">
-            <label for="serverId" class="text-white/90 text-sm block">Server ID</label>
+            <label for="serverId" class="text-gray-700 text-sm block">Server ID</label>
             <input
               type="number"
               id="serverId"
               placeholder="Masukkan Server ID Anda"
               autocomplete="off"
-              class="w-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 h-9 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-white/30"
+              class="w-full bg-blue-100/70 border border-blue-300 text-gray-900 placeholder:text-gray-500 h-9 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -58,41 +58,41 @@
           <button
             type="submit"
             id="submit-button"
-            class="w-full bg-white/15 hover:bg-white/25 text-white border-0 h-9 mt-2 transition-all duration-200 rounded-md"
+            class="w-full bg-blue-500 hover:bg-blue-600 text-white border-0 h-9 mt-2 transition-all duration-200 rounded-md"
           >
             <span>Cek Sekarang!</span>
           </button>
         </form>
 
         <!-- Error Message -->
-        <div id="error-container" class="mt-4 bg-red-500/20 border-0 text-white p-3 rounded-md hidden">
+        <div id="error-container" class="mt-4 bg-red-100 border border-red-400 text-red-700 p-3 rounded-md hidden">
           <div class="flex items-center">
-            <i data-lucide="alert-circle" class="h-4 w-4 text-white"></i>
+            <i data-lucide="alert-circle" class="h-4 w-4 text-red-700"></i>
             <p class="ml-2 text-sm" id="error-message"></p>
           </div>
         </div>
 
         <!-- Result -->
-        <div id="result-container" class="mt-4 p-3 rounded-md bg-white/10 hidden">
+        <div id="result-container" class="mt-4 p-3 rounded-md bg-blue-100/50 border border-blue-300 hidden">
           <div class="flex items-center gap-2 mb-2">
-            <i data-lucide="check-circle-2" class="h-4 w-4 text-green-300"></i>
-            <h3 class="font-medium text-white text-sm">Akun Valid</h3>
+            <i data-lucide="check-circle-2" class="h-4 w-4 text-blue-600"></i>
+            <h3 class="font-medium text-gray-900 text-sm">Akun Valid</h3>
           </div>
 
           <div class="space-y-2 mt-2">
             <div class="flex items-center gap-2">
-              <i data-lucide="user" class="h-4 w-4 text-white/70"></i>
+              <i data-lucide="user" class="h-4 w-4 text-gray-700"></i>
               <div>
-                <p class="text-xs text-white/70">Nickname</p>
-                <p class="text-white text-sm" id="result-nickname"></p>
+                <p class="text-xs text-gray-700">Nickname</p>
+                <p class="text-gray-900 text-sm" id="result-nickname"></p>
               </div>
             </div>
 
             <div class="flex items-center gap-2">
-              <i data-lucide="globe" class="h-4 w-4 text-white/70"></i>
+              <i data-lucide="globe" class="h-4 w-4 text-gray-700"></i>
               <div>
-                <p class="text-xs text-white/70">Country</p>
-                <p class="text-white text-sm" id="result-country"></p>
+                <p class="text-xs text-gray-700">Country</p>
+                <p class="text-gray-900 text-sm" id="result-country"></p>
               </div>
             </div>
           </div>
@@ -100,10 +100,10 @@
       </div>
 
       <!-- Footer -->
-      <div class="flex justify-center pt-2 pb-3 border-t border-white/10 px-6">
-        <p class="text-xs text-white/50">
+      <div class="flex justify-center pt-2 pb-3 border-t border-blue-300 px-6">
+        <p class="text-xs text-gray-600">
           © <span id="current-year"></span>
-          <a href="https://www.facebook.com/share/1BGUTQuc87/?mibextid=wwXIfr" target="_blank">@Notfound Drew</a>
+          <a href="https://www.facebook.com/share/1BGUTQuc87/?mibextid=wwXIfr" target="_blank" class="text-blue-600 hover:underline">@Notfound Drew</a>
         </p>
       </div>
     </div>
