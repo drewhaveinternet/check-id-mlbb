@@ -12,233 +12,19 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Custom CSS -->
-  <style>
-    /* Background and text */
-    body {
-      background: linear-gradient(to right, #fb923c, #fef3c7, #fed7aa); /* gradasi oranye */
-      color: #1f2937; /* teks gelap */
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    main {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-
-    .max-w-md {
-      max-width: 28rem; /* sesuai max-w-md Tailwind */
-      width: 100%;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-
-    /* Header */
-    #header {
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    #header img {
-      height: 5rem; /* h-20 */
-      width: 8rem; /* w-32 */
-      margin-bottom: 0.5rem;
-    }
-
-    #header h1 {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #1f2937;
-      margin: 0;
-    }
-
-    #header p {
-      margin-top: 0.25rem;
-      font-size: 0.875rem;
-      color: #4b5563; /* teks abu */
-    }
-
-    /* Form */
-    form#validation-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-      padding-bottom: 1.5rem;
-    }
-
-    label {
-      font-size: 0.875rem;
-      color: #4b5563;
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-
-    input[type="number"] {
-      width: 100%;
-      background-color: rgba(253, 230, 138, 0.7); /* orange-100/70 */
-      border: 1px solid #fbbf24; /* orange-300 */
-      color: #1f2937;
-      font-size: 1rem;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-      height: 2.25rem;
-      border-radius: 0.375rem;
-      box-sizing: border-box;
-      transition: box-shadow 0.2s ease;
-    }
-
-    input[type="number"]::placeholder {
-      color: #6b7280;
-    }
-
-    input[type="number"]:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.6);
-      border-color: #fbbf24;
-      background-color: #fef3c7;
-    }
-
-    /* Button */
-    button#submit-button {
-      width: 100%;
-      background-color: #f97316; /* orange-500 */
-      color: white;
-      border: none;
-      height: 2.25rem;
-      margin-top: 0.5rem;
-      border-radius: 0.375rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      font-size: 1rem;
-    }
-
-    button#submit-button:hover {
-      background-color: #ea580c; /* orange-600 */
-    }
-
-    /* Error message */
-    #error-container {
-      margin-top: 1rem;
-      background-color: rgba(254, 202, 202, 0.5);
-      border: 1px solid #f87171;
-      color: #b91c1c;
-      padding: 0.75rem;
-      border-radius: 0.375rem;
-      display: none;
-    }
-
-    #error-container .flex {
-      display: flex;
-      align-items: center;
-    }
-
-    #error-container i {
-      height: 1rem;
-      width: 1rem;
-      color: #b91c1c;
-      flex-shrink: 0;
-    }
-
-    #error-message {
-      margin-left: 0.5rem;
-      font-size: 0.875rem;
-    }
-
-    /* Result */
-    #result-container {
-      margin-top: 1rem;
-      background-color: rgba(253, 230, 138, 0.5);
-      border: 1px solid #fbbf24;
-      padding: 0.75rem;
-      border-radius: 0.375rem;
-      display: none;
-    }
-
-    #result-container .flex {
-      display: flex;
-      align-items: center;
-    }
-
-    #result-container .gap-2 {
-      gap: 0.5rem;
-    }
-
-    #result-container .mb-2 {
-      margin-bottom: 0.5rem;
-    }
-
-    #result-container .text-white {
-      color: #1f2937;
-    }
-
-    #result-container h3 {
-      font-weight: 500;
-      font-size: 0.875rem;
-      margin: 0;
-      color: #1f2937;
-    }
-
-    #result-container p {
-      margin: 0;
-    }
-
-    #result-container p.text-xs {
-      font-size: 0.75rem;
-      color: #4b5563;
-    }
-
-    #result-container p.text-sm {
-      font-size: 1rem;
-      color: #1f2937;
-    }
-
-    /* Footer */
-    .footer {
-      display: flex;
-      justify-content: center;
-      padding-top: 0.5rem;
-      padding-bottom: 0.75rem;
-      border-top: 1px solid #fbbf24;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-
-    .footer p {
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin: 0;
-    }
-
-    .footer a {
-      color: #ea580c;
-      text-decoration: none;
-      margin-left: 0.25rem;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <!-- Tailwind Output -->
+  <link rel="stylesheet" href="./css/output.css" />
 </head>
-<body>
+<body class="bg-gradient-to-r from-orange-400 via-orange-300 to-yellow-200 text-gray-900">
   <main class="min-h-screen flex flex-col items-center justify-center p-4 animated-gradient">
-    <div class="max-w-md px-4 sm:px-0">
+    <div class="w-full max-w-md px-4 sm:px-0">
       <!-- Header -->
       <div class="mb-6 text-center fade-in" id="header">
         <div class="flex items-center justify-center mb-2">
-          <img src="./img/logo-ml.webp" class="h-20 w-32" alt="Logo Mobile Legends" />
+          <img src="./img/logo-ml.webp" class="h-20 w-32 text-white" alt="Logo Mobile Legends" />
         </div>
-        <h1 class="text-2xl font-bold">CEK REGION</h1>
-        <p class="text-sm mt-1">Cek Region Mobile Legends lewat ID</p>
+        <h1 class="text-2xl font-bold text-gray-900">CEK REGION</h1>
+        <p class="text-gray-700 text-sm mt-1">Cek Region Mobile Legends lewat ID</p>
       </div>
 
       <!-- Form -->
@@ -246,61 +32,67 @@
         <form id="validation-form" class="space-y-4">
           <!-- User ID -->
           <div class="space-y-1.5">
-            <label for="gameId" class="text-sm block">User ID</label>
+            <label for="gameId" class="text-gray-900 text-sm block">User ID</label>
             <input
               type="number"
               id="gameId"
               placeholder="Masukkan User ID Anda"
               autocomplete="off"
+              class="w-full bg-white/80 border border-gray-400 text-gray-900 placeholder:text-gray-400 h-9 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
             />
           </div>
 
           <!-- Server ID -->
           <div class="space-y-1.5">
-            <label for="serverId" class="text-sm block">Server ID</label>
+            <label for="serverId" class="text-gray-900 text-sm block">Server ID</label>
             <input
               type="number"
               id="serverId"
               placeholder="Masukkan Server ID Anda"
               autocomplete="off"
+              class="w-full bg-white/80 border border-gray-400 text-gray-900 placeholder:text-gray-400 h-9 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
             />
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" id="submit-button">
+          <button
+            type="submit"
+            id="submit-button"
+            class="w-full bg-orange-400 hover:bg-orange-500 text-white border-0 h-9 mt-2 transition-all duration-200 rounded-md"
+          >
             <span>Cek Sekarang!</span>
           </button>
         </form>
 
         <!-- Error Message -->
-        <div id="error-container">
+        <div id="error-container" class="mt-4 bg-red-500/20 border-0 text-red-900 p-3 rounded-md hidden">
           <div class="flex items-center">
-            <i data-lucide="alert-circle"></i>
-            <p id="error-message"></p>
+            <i data-lucide="alert-circle" class="h-4 w-4 text-red-900"></i>
+            <p class="ml-2 text-sm" id="error-message"></p>
           </div>
         </div>
 
         <!-- Result -->
-        <div id="result-container">
+        <div id="result-container" class="mt-4 p-3 rounded-md bg-white/90 hidden">
           <div class="flex items-center gap-2 mb-2">
-            <i data-lucide="check-circle-2"></i>
-            <h3>Akun Valid</h3>
+            <i data-lucide="check-circle-2" class="h-4 w-4 text-green-600"></i>
+            <h3 class="font-medium text-gray-900 text-sm">Akun Valid</h3>
           </div>
 
           <div class="space-y-2 mt-2">
             <div class="flex items-center gap-2">
-              <i data-lucide="user"></i>
+              <i data-lucide="user" class="h-4 w-4 text-gray-700"></i>
               <div>
-                <p class="text-xs">Nickname</p>
-                <p id="result-nickname" class="text-sm"></p>
+                <p class="text-xs text-gray-700">Nickname</p>
+                <p class="text-gray-900 text-sm" id="result-nickname"></p>
               </div>
             </div>
 
             <div class="flex items-center gap-2">
-              <i data-lucide="globe"></i>
+              <i data-lucide="globe" class="h-4 w-4 text-gray-700"></i>
               <div>
-                <p class="text-xs">Country</p>
-                <p id="result-country" class="text-sm"></p>
+                <p class="text-xs text-gray-700">Country</p>
+                <p class="text-gray-900 text-sm" id="result-country"></p>
               </div>
             </div>
           </div>
@@ -308,10 +100,10 @@
       </div>
 
       <!-- Footer -->
-      <div class="footer">
-        <p>
+      <div class="flex justify-center pt-2 pb-3 border-t border-gray-300 px-6">
+        <p class="text-xs text-gray-600">
           © <span id="current-year"></span>
-          <a href="https://www.facebook.com/share/1BGUTQuc87/?mibextid=wwXIfr" target="_blank">@Notfound Drew</a>
+          <a href="https://www.facebook.com/share/1BGUTQuc87/?mibextid=wwXIfr" target="_blank" class="text-orange-600 hover:underline">@Notfound Drew</a>
         </p>
       </div>
     </div>
