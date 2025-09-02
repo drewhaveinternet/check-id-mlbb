@@ -12,13 +12,13 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Custom CSS gabungan -->
+  <!-- Custom CSS -->
   <style>
     /* Background and text */
     body {
-      background: linear-gradient(to right, #fb923c, #fef3c7, #fed7aa);
-      color: #1f2937; /* text-gray-900 */
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      background: linear-gradient(to right, #fb923c, #fef3c7, #fed7aa); /* gradasi oranye */
+      color: #1f2937; /* teks gelap */
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 0;
     }
@@ -32,9 +32,9 @@
       padding: 1rem;
     }
 
-    .container {
+    .max-w-md {
+      max-width: 28rem; /* sesuai max-w-md Tailwind */
       width: 100%;
-      max-width: 28rem; /* max-w-md */
       padding-left: 1rem;
       padding-right: 1rem;
     }
@@ -61,11 +61,11 @@
     #header p {
       margin-top: 0.25rem;
       font-size: 0.875rem;
-      color: #4b5563; /* text-gray-700 */
+      color: #4b5563; /* teks abu */
     }
 
     /* Form */
-    form {
+    form#validation-form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -75,19 +75,20 @@
     }
 
     label {
-      display: block;
       font-size: 0.875rem;
       color: #4b5563;
+      display: block;
       margin-bottom: 0.25rem;
     }
 
     input[type="number"] {
       width: 100%;
-      background-color: rgba(253, 230, 138, 0.7);
-      border: 1px solid #fbbf24;
+      background-color: rgba(253, 230, 138, 0.7); /* orange-100/70 */
+      border: 1px solid #fbbf24; /* orange-300 */
       color: #1f2937;
       font-size: 1rem;
-      padding: 0 0.75rem;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
       height: 2.25rem;
       border-radius: 0.375rem;
       box-sizing: border-box;
@@ -108,7 +109,7 @@
     /* Button */
     button#submit-button {
       width: 100%;
-      background-color: #f97316;
+      background-color: #f97316; /* orange-500 */
       color: white;
       border: none;
       height: 2.25rem;
@@ -121,10 +122,10 @@
     }
 
     button#submit-button:hover {
-      background-color: #ea580c;
+      background-color: #ea580c; /* orange-600 */
     }
 
-    /* Error container */
+    /* Error message */
     #error-container {
       margin-top: 1rem;
       background-color: rgba(254, 202, 202, 0.5);
@@ -152,7 +153,7 @@
       font-size: 0.875rem;
     }
 
-    /* Result container */
+    /* Result */
     #result-container {
       margin-top: 1rem;
       background-color: rgba(253, 230, 138, 0.5);
@@ -162,51 +163,42 @@
       display: none;
     }
 
-    #result-container .header {
+    #result-container .flex {
       display: flex;
       align-items: center;
+    }
+
+    #result-container .gap-2 {
       gap: 0.5rem;
+    }
+
+    #result-container .mb-2 {
       margin-bottom: 0.5rem;
     }
 
-    #result-container .header i {
-      height: 1rem;
-      width: 1rem;
-      color: #c2410c;
-      flex-shrink: 0;
+    #result-container .text-white {
+      color: #1f2937;
     }
 
-    #result-container .header h3 {
+    #result-container h3 {
       font-weight: 500;
-      color: #1f2937;
       font-size: 0.875rem;
       margin: 0;
+      color: #1f2937;
     }
 
-    #result-container .info-group {
-      margin-top: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    #result-container p {
+      margin: 0;
     }
 
-    #result-container .info-group i {
-      height: 1rem;
-      width: 1rem;
-      color: #4b5563;
-      flex-shrink: 0;
-    }
-
-    #result-container .info-text p:first-child {
+    #result-container p.text-xs {
       font-size: 0.75rem;
       color: #4b5563;
-      margin: 0;
     }
 
-    #result-container .info-text p:last-child {
+    #result-container p.text-sm {
       font-size: 1rem;
       color: #1f2937;
-      margin: 0;
     }
 
     /* Footer */
@@ -235,77 +227,26 @@
     .footer a:hover {
       text-decoration: underline;
     }
-
-    /* Utility classes */
-    .flex {
-      display: flex;
-    }
-
-    .items-center {
-      align-items: center;
-    }
-
-    .justify-center {
-      justify-content: center;
-    }
-
-    .gap-2 {
-      gap: 0.5rem;
-    }
-
-    .mb-2 {
-      margin-bottom: 0.5rem;
-    }
-
-    .mt-2 {
-      margin-top: 0.5rem;
-    }
-
-    .mt-4 {
-      margin-top: 1rem;
-    }
-
-    .rounded-md {
-      border-radius: 0.375rem;
-    }
-
-    .px-3 {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-    }
-
-    .pb-6 {
-      padding-bottom: 1.5rem;
-    }
-
-    .space-y-2 > * + * {
-      margin-top: 0.5rem;
-    }
-
-    .space-y-1\.5 > * + * {
-      margin-top: 0.375rem;
-    }
-
   </style>
 </head>
 <body>
-  <main>
-    <div class="container">
+  <main class="min-h-screen flex flex-col items-center justify-center p-4 animated-gradient">
+    <div class="max-w-md px-4 sm:px-0">
       <!-- Header -->
-      <div id="header">
+      <div class="mb-6 text-center fade-in" id="header">
         <div class="flex items-center justify-center mb-2">
-          <img src="./img/logo-ml.webp" alt="Logo Mobile Legends" />
+          <img src="./img/logo-ml.webp" class="h-20 w-32" alt="Logo Mobile Legends" />
         </div>
-        <h1>CEK REGION</h1>
-        <p>Cek Region Mobile Legends lewat ID</p>
+        <h1 class="text-2xl font-bold">CEK REGION</h1>
+        <p class="text-sm mt-1">Cek Region Mobile Legends lewat ID</p>
       </div>
 
       <!-- Form -->
-      <div class="pb-6">
+      <div class="px-6 pb-6">
         <form id="validation-form" class="space-y-4">
           <!-- User ID -->
           <div class="space-y-1.5">
-            <label for="gameId">User ID</label>
+            <label for="gameId" class="text-sm block">User ID</label>
             <input
               type="number"
               id="gameId"
@@ -316,7 +257,7 @@
 
           <!-- Server ID -->
           <div class="space-y-1.5">
-            <label for="serverId">Server ID</label>
+            <label for="serverId" class="text-sm block">Server ID</label>
             <input
               type="number"
               id="serverId"
@@ -341,25 +282,25 @@
 
         <!-- Result -->
         <div id="result-container">
-          <div class="header flex items-center gap-2 mb-2">
+          <div class="flex items-center gap-2 mb-2">
             <i data-lucide="check-circle-2"></i>
             <h3>Akun Valid</h3>
           </div>
 
           <div class="space-y-2 mt-2">
-            <div class="info-group flex items-center gap-2">
+            <div class="flex items-center gap-2">
               <i data-lucide="user"></i>
-              <div class="info-text">
-                <p>Nickname</p>
-                <p id="result-nickname"></p>
+              <div>
+                <p class="text-xs">Nickname</p>
+                <p id="result-nickname" class="text-sm"></p>
               </div>
             </div>
 
-            <div class="info-group flex items-center gap-2">
+            <div class="flex items-center gap-2">
               <i data-lucide="globe"></i>
-              <div class="info-text">
-                <p>Country</p>
-                <p id="result-country"></p>
+              <div>
+                <p class="text-xs">Country</p>
+                <p id="result-country" class="text-sm"></p>
               </div>
             </div>
           </div>
@@ -379,11 +320,11 @@
   <!-- Custom Script -->
   <script src="./js/script.js"></script>
   <script>
-    // Set current year automatically
+    // Set current year
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Initialize lucide icons
-    if (window.lucide) {
+    // Replace lucide icons
+    if(window.lucide) {
       window.lucide.replace();
     }
   </script>
