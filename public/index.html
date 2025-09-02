@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cek Region Mobile Legends</title>
   <meta name="description" content="Cek Region Mobile Legends Via ID" />
 
@@ -12,186 +12,14 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <style>
-    body {
-      margin: 0;
-      background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
-      color: white;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-    }
-
-    main {
-      width: 100%;
-      max-width: 28rem;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    #header {
-      margin-bottom: 1.5rem;
-      text-align: center;
-      color: white;
-    }
-
-    #header img {
-      height: 5rem;
-      width: 8rem;
-      margin: 0 auto 0.5rem;
-      filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
-    }
-
-    #header h1 {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin: 0;
-    }
-
-    #header p {
-      margin-top: 0.25rem;
-      font-size: 0.875rem;
-      opacity: 0.8;
-    }
-
-    form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 0 1.5rem 1.5rem 1.5rem;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.25rem;
-      font-size: 0.875rem;
-      color: rgba(255 255 255 / 0.9);
-    }
-
-    input[type="number"] {
-      width: 100%;
-      height: 2.25rem;
-      padding: 0 0.75rem;
-      border-radius: 0.375rem;
-      border: 1px solid rgba(255 255 255 / 0.2);
-      background-color: rgba(255 255 255 / 0.1);
-      color: white;
-      font-size: 1rem;
-      outline-offset: 2px;
-      transition: box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    input[type="number"]::placeholder {
-      color: rgba(255 255 255 / 0.4);
-    }
-
-    input[type="number"]:focus {
-      border-color: rgba(255 255 255 / 0.7);
-      box-shadow: 0 0 0 3px rgba(255 255 255 / 0.3);
-      outline: none;
-    }
-
-    button#submit-button {
-      width: 100%;
-      height: 2.25rem;
-      background-color: rgba(255 255 255 / 0.15);
-      color: white;
-      font-weight: 600;
-      border: none;
-      border-radius: 0.375rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      margin-top: 0.5rem;
-    }
-
-    button#submit-button:hover {
-      background-color: rgba(255 255 255 / 0.25);
-    }
-
-    #error-container {
-      margin-top: 1rem;
-      background-color: rgba(239, 68, 68, 0.2);
-      padding: 0.75rem;
-      border-radius: 0.375rem;
-      display: none;
-      color: white;
-      font-size: 0.875rem;
-    }
-
-    #result-container {
-      margin-top: 1rem;
-      padding: 0.75rem;
-      border-radius: 0.375rem;
-      background-color: rgba(255 255 255 / 0.1);
-      color: white;
-      font-size: 0.875rem;
-      display: none;
-    }
-
-    #result-container .flex {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-      color: #34d399; /* green-400 */
-    }
-
-    #result-container h3 {
-      margin: 0;
-      font-weight: 500;
-      font-size: 0.875rem;
-      color: white;
-    }
-
-    #result-container .space-y-2 > div {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-      color: rgba(255 255 255 / 0.7);
-    }
-
-    #result-container p.text-xs {
-      font-size: 0.75rem;
-      margin: 0;
-    }
-
-    #result-container p.text-sm {
-      font-size: 0.875rem;
-      margin: 0;
-    }
-
-    .footer {
-      margin-top: 0.5rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.75rem;
-      border-top: 1px solid rgba(255 255 255 / 0.1);
-      text-align: center;
-      font-size: 0.75rem;
-      color: rgba(255 255 255 / 0.5);
-    }
-
-    .footer a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <!-- Tailwind Output -->
+  <link rel="stylesheet" href="./css/output.css" />
 </head>
-<body>
-  <main>
-    <div>
-      <div id="header">
+<body class="bg-gray-900 text-white">
+  <main class="min-h-screen flex flex-col items-center justify-center p-4 animated-gradient">
+    <div class="w-full max-w-md px-4 sm:px-0">
+      <!-- Header -->
+      <div class="mb-6 text-center fade-in" id="header">
         <div class="flex items-center justify-center mb-2">
           <img src="./img/logo-ml.webp" class="h-20 w-32 text-white" alt="Logo Mobile Legends" />
         </div>
@@ -199,8 +27,10 @@
         <p class="text-white/70 text-sm mt-1">Cek Region Mobile Legends lewat ID</p>
       </div>
 
+      <!-- Form -->
       <div class="px-6 pb-6">
         <form id="validation-form" class="space-y-4">
+          <!-- User ID -->
           <div class="space-y-1.5">
             <label for="gameId" class="text-white/90 text-sm block">User ID</label>
             <input
@@ -212,6 +42,7 @@
             />
           </div>
 
+          <!-- Server ID -->
           <div class="space-y-1.5">
             <label for="serverId" class="text-white/90 text-sm block">Server ID</label>
             <input
@@ -223,6 +54,7 @@
             />
           </div>
 
+          <!-- Submit Button -->
           <button
             type="submit"
             id="submit-button"
@@ -232,6 +64,7 @@
           </button>
         </form>
 
+        <!-- Error Message -->
         <div id="error-container" class="mt-4 bg-red-500/20 border-0 text-white p-3 rounded-md hidden">
           <div class="flex items-center">
             <i data-lucide="alert-circle" class="h-4 w-4 text-white"></i>
@@ -239,6 +72,7 @@
           </div>
         </div>
 
+        <!-- Result -->
         <div id="result-container" class="mt-4 p-3 rounded-md bg-white/10 hidden">
           <div class="flex items-center gap-2 mb-2">
             <i data-lucide="check-circle-2" class="h-4 w-4 text-green-300"></i>
@@ -265,6 +99,7 @@
         </div>
       </div>
 
+      <!-- Footer -->
       <div class="flex justify-center pt-2 pb-3 border-t border-white/10 px-6">
         <p class="text-xs text-white/50">
           © <span id="current-year"></span>
@@ -274,59 +109,7 @@
     </div>
   </main>
 
-  <script>
-    // Set current year
-    $('#current-year').text(new Date().getFullYear());
-
-    // Replace lucide icons
-    lucide.replace();
-
-    $('#validation-form').on('submit', function(e) {
-      e.preventDefault();
-
-      // Ambil input value
-      const gameId = $('#gameId').val().trim();
-      const serverId = $('#serverId').val().trim();
-
-      // Reset tampilan error & hasil
-      $('#error-container').hide();
-      $('#result-container').hide();
-
-      // Validasi input
-      if (!gameId || !serverId) {
-        $('#error-message').text('User ID dan Server ID wajib diisi!');
-        $('#error-container').show();
-        return;
-      }
-
-      if (isNaN(gameId) || isNaN(serverId)) {
-        $('#error-message').text('User ID dan Server ID harus berupa angka!');
-        $('#error-container').show();
-        return;
-      }
-
-      // Simulasi proses cek (misal: API call)
-      // Di sini aku kasih dummy data supaya langsung muncul hasilnya
-      // Kamu bisa ganti dengan AJAX ke backend kamu sendiri
-
-      // Tampilkan loading (opsional)
-      $('#submit-button').attr('disabled', true).text('Memeriksa...');
-
-      setTimeout(() => {
-        // Contoh data hasil validasi
-        const data = {
-          nickname: 'PlayerML123',
-          country: 'Indonesia',
-        };
-
-        // Isi hasil ke UI
-        $('#result-nickname').text(data.nickname);
-        $('#result-country').text(data.country);
-
-        $('#result-container').show();
-        $('#submit-button').attr('disabled', false).text('Cek Sekarang!');
-      }, 1500); // simulasi delay 1.5 detik
-    });
-  </script>
+  <!-- Custom Script -->
+  <script src="./js/script.js"></script>
 </body>
 </html>
