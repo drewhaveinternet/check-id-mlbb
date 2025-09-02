@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cek Region Mobile Legends</title>
   <meta name="description" content="Cek Region Mobile Legends Via ID" />
 
@@ -16,8 +16,8 @@
     /* Background gradient biru */
     body {
       margin: 0;
-      background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa); /* from blue-600 to blue-400 */
-      color: #1e293b; /* text-gray-900 */
+      background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
+      color: #1e293b;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
       min-height: 100vh;
@@ -28,16 +28,14 @@
     }
 
     main {
-      background: transparent;
       width: 100%;
-      max-width: 28rem; /* ~448px */
+      max-width: 28rem;
       padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Header */
     #header {
       margin-bottom: 1.5rem;
       text-align: center;
@@ -45,10 +43,9 @@
     }
 
     #header img {
-      height: 5rem; /* 20 * 4px */
-      width: 8rem;  /* 32 * 4px */
-      display: block;
-      margin: 0 auto 0.5rem auto;
+      height: 5rem;
+      width: 8rem;
+      margin: 0 auto 0.5rem;
       filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
     }
 
@@ -64,7 +61,6 @@
       opacity: 0.8;
     }
 
-    /* Form */
     form {
       width: 100%;
       display: flex;
@@ -82,23 +78,23 @@
 
     input[type="number"] {
       width: 100%;
-      height: 2.25rem; /* 9 */
+      height: 2.25rem;
       padding: 0 0.75rem;
       border-radius: 0.375rem;
-      border: 1px solid #d1d5db; /* border-gray-300 */
+      border: 1px solid #d1d5db;
       background-color: white;
-      color: #1e293b; /* text-gray-900 */
+      color: #1e293b;
       font-size: 1rem;
       outline-offset: 2px;
       transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
     input[type="number"]::placeholder {
-      color: #94a3b8; /* placeholder-gray-400 */
+      color: #94a3b8;
     }
 
     input[type="number"]:focus {
-      border-color: #60a5fa; /* blue-400 */
+      border-color: #60a5fa;
       box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5);
       outline: none;
     }
@@ -106,7 +102,7 @@
     button#submit-button {
       width: 100%;
       height: 2.25rem;
-      background-color: #2563eb; /* blue-600 */
+      background-color: #2563eb;
       color: white;
       font-weight: 600;
       border: none;
@@ -117,13 +113,12 @@
     }
 
     button#submit-button:hover {
-      background-color: #1d4ed8; /* blue-700 */
+      background-color: #1d4ed8;
     }
 
-    /* Error container */
     #error-container {
       margin-top: 1rem;
-      background-color: rgba(239, 68, 68, 0.2); /* red-500/20 */
+      background-color: rgba(239, 68, 68, 0.2);
       padding: 0.75rem;
       border-radius: 0.375rem;
       display: none;
@@ -131,13 +126,6 @@
       font-size: 0.875rem;
     }
 
-    #error-container.flex {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    /* Result container */
     #result-container {
       margin-top: 1rem;
       padding: 0.75rem;
@@ -153,7 +141,7 @@
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 0.5rem;
-      color: #059669; /* green-600 */
+      color: #059669;
     }
 
     #result-container h3 {
@@ -172,7 +160,7 @@
 
     #result-container p.text-xs {
       font-size: 0.75rem;
-      color: #4b5563; /* gray-700 */
+      color: #4b5563;
       margin: 0;
     }
 
@@ -182,23 +170,22 @@
       margin: 0;
     }
 
-    /* Footer */
-    footer, .footer {
+    .footer {
       margin-top: 0.5rem;
       padding-top: 0.5rem;
       padding-bottom: 0.75rem;
-      border-top: 1px solid rgba(29, 78, 216, 0.7); /* blue-700 */
+      border-top: 1px solid rgba(29, 78, 216, 0.7);
       text-align: center;
       font-size: 0.75rem;
       color: rgba(255 255 255 / 0.7);
     }
 
-    footer a {
-      color: #2563eb; /* blue-600 */
+    .footer a {
+      color: #2563eb;
       text-decoration: none;
     }
 
-    footer a:hover {
+    .footer a:hover {
       text-decoration: underline;
     }
   </style>
@@ -206,17 +193,14 @@
 <body>
   <main>
     <div>
-      <!-- Header -->
       <div id="header">
         <img src="./img/logo-ml.webp" alt="Logo Mobile Legends" />
         <h1>CEK REGION</h1>
         <p>Cek Region Mobile Legends lewat ID</p>
       </div>
 
-      <!-- Form -->
       <div>
         <form id="validation-form">
-          <!-- User ID -->
           <div>
             <label for="gameId">User ID</label>
             <input
@@ -227,7 +211,6 @@
             />
           </div>
 
-          <!-- Server ID -->
           <div>
             <label for="serverId">Server ID</label>
             <input
@@ -238,13 +221,11 @@
             />
           </div>
 
-          <!-- Submit Button -->
           <button type="submit" id="submit-button">
             <span>Cek Sekarang!</span>
           </button>
         </form>
 
-        <!-- Error Message -->
         <div id="error-container" role="alert" aria-live="assertive">
           <div class="flex items-center">
             <i data-lucide="alert-circle" class="h-4 w-4"></i>
@@ -252,7 +233,6 @@
           </div>
         </div>
 
-        <!-- Result -->
         <div id="result-container" aria-live="polite">
           <div class="flex items-center gap-2">
             <i data-lucide="check-circle-2" class="h-4 w-4"></i>
@@ -279,17 +259,15 @@
         </div>
       </div>
 
-      <!-- Footer -->
-      <footer>
+      <div class="footer">
         <p>
           © <span id="current-year"></span>
           <a href="https://www.facebook.com/share/1BGUTQuc87/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">@Notfound Drew</a>
         </p>
-      </footer>
+      </div>
     </div>
   </main>
 
-  <!-- Custom Script -->
   <script src="./js/script.js"></script>
   <script>
     // Set current year
