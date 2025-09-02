@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cek Region Mobile Legends</title>
   <meta name="description" content="Cek Region Mobile Legends Via ID" />
 
@@ -188,11 +188,10 @@
     }
   </style>
 </head>
-<body class="bg-gray-900 text-white">
-  <main class="min-h-screen flex flex-col items-center justify-center p-4 animated-gradient">
-    <div class="w-full max-w-md px-4 sm:px-0">
-      <!-- Header -->
-      <div class="mb-6 text-center fade-in" id="header">
+<body>
+  <main>
+    <div>
+      <div id="header">
         <div class="flex items-center justify-center mb-2">
           <img src="./img/logo-ml.webp" class="h-20 w-32 text-white" alt="Logo Mobile Legends" />
         </div>
@@ -200,10 +199,8 @@
         <p class="text-white/70 text-sm mt-1">Cek Region Mobile Legends lewat ID</p>
       </div>
 
-      <!-- Form -->
       <div class="px-6 pb-6">
         <form id="validation-form" class="space-y-4">
-          <!-- User ID -->
           <div class="space-y-1.5">
             <label for="gameId" class="text-white/90 text-sm block">User ID</label>
             <input
@@ -215,7 +212,6 @@
             />
           </div>
 
-          <!-- Server ID -->
           <div class="space-y-1.5">
             <label for="serverId" class="text-white/90 text-sm block">Server ID</label>
             <input
@@ -227,7 +223,6 @@
             />
           </div>
 
-          <!-- Submit Button -->
           <button
             type="submit"
             id="submit-button"
@@ -237,7 +232,6 @@
           </button>
         </form>
 
-        <!-- Error Message -->
         <div id="error-container" class="mt-4 bg-red-500/20 border-0 text-white p-3 rounded-md hidden">
           <div class="flex items-center">
             <i data-lucide="alert-circle" class="h-4 w-4 text-white"></i>
@@ -245,7 +239,6 @@
           </div>
         </div>
 
-        <!-- Result -->
         <div id="result-container" class="mt-4 p-3 rounded-md bg-white/10 hidden">
           <div class="flex items-center gap-2 mb-2">
             <i data-lucide="check-circle-2" class="h-4 w-4 text-green-300"></i>
@@ -272,7 +265,6 @@
         </div>
       </div>
 
-      <!-- Footer -->
       <div class="flex justify-center pt-2 pb-3 border-t border-white/10 px-6">
         <p class="text-xs text-white/50">
           © <span id="current-year"></span>
@@ -282,7 +274,59 @@
     </div>
   </main>
 
-  <!-- Custom Script -->
-  <script src="./js/script.js"></script>
+  <script>
+    // Set current year
+    $('#current-year').text(new Date().getFullYear());
+
+    // Replace lucide icons
+    lucide.replace();
+
+    $('#validation-form').on('submit', function(e) {
+      e.preventDefault();
+
+      // Ambil input value
+      const gameId = $('#gameId').val().trim();
+      const serverId = $('#serverId').val().trim();
+
+      // Reset tampilan error & hasil
+      $('#error-container').hide();
+      $('#result-container').hide();
+
+      // Validasi input
+      if (!gameId || !serverId) {
+        $('#error-message').text('User ID dan Server ID wajib diisi!');
+        $('#error-container').show();
+        return;
+      }
+
+      if (isNaN(gameId) || isNaN(serverId)) {
+        $('#error-message').text('User ID dan Server ID harus berupa angka!');
+        $('#error-container').show();
+        return;
+      }
+
+      // Simulasi proses cek (misal: API call)
+      // Di sini aku kasih dummy data supaya langsung muncul hasilnya
+      // Kamu bisa ganti dengan AJAX ke backend kamu sendiri
+
+      // Tampilkan loading (opsional)
+      $('#submit-button').attr('disabled', true).text('Memeriksa...');
+
+      setTimeout(() => {
+        // Contoh data hasil validasi
+        const data = {
+          nickname: 'PlayerML123',
+          country: 'Indonesia',
+        };
+
+        // Isi hasil ke UI
+        $('#result-nickname').text(data.nickname);
+        $('#result-country').text(data.country);
+
+        $('#result-container').show();
+        $('#submit-button').attr('disabled', false).text('Cek Sekarang!');
+      }, 1500); // simulasi delay 1.5 detik
+    });
+  </script>
 </body>
 </html>
