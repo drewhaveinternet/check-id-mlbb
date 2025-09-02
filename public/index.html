@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cek Region Mobile Legends</title>
   <meta name="description" content="Cek Region Mobile Legends Via ID" />
-
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
+  
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -268,14 +265,64 @@
     </div>
   </main>
 
-  <script src="./js/script.js"></script>
   <script>
-    // Set current year
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Replace lucide icons
     if (window.lucide) {
       window.lucide.replace();
+    }
+
+    $('#validation-form').on('submit', function(e) {
+      e.preventDefault();
+
+      const userId = $('#gameId').val().trim();
+      const serverId = $('#serverId').val().trim();
+
+      $('#error-container').hide();
+      $('#result-container').hide();
+
+      if (!userId) {
+        showError('User ID tidak boleh kosong');
+        return;
+      }
+
+      if (!serverId) {
+        showError('Server ID tidak boleh kosong');
+        return;
+      }
+
+      // Contoh: API URL (ganti sesuai API sebenarnya)
+      const apiUrl = `https://api-mobile-legends.example.com/check?userId=${userId}&serverId=${serverId}`;
+
+      // Tampilkan loading jika perlu (bisa ditambahkan)
+
+      // Contoh fetch API (ubah sesuai API nyata)
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Data tidak ditemukan atau server error');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Misal struktur data: { nickname: "NamaUser", country: "Indonesia" }
+          if (!data.nickname || !data.country) {
+            throw new Error('Data tidak lengkap dari server');
+          }
+
+          $('#result-nickname').text(data.nickname);
+          $('#result-country').text(data.country);
+
+          $('#result-container').show();
+        })
+        .catch(err => {
+          showError(err.message || 'Terjadi kesalahan saat mengambil data');
+        });
+    });
+
+    function showError(message) {
+      $('#error-message').text(message);
+      $('#error-container').show();
     }
   </script>
 </body>
